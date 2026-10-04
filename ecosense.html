@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EcoSense | Интеллектуальный контроль питания</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0A0A;
+            --surface: #141414;
+            --text: #EAEAEA;
+            --text-muted: #888888;
+            --gold: #C5A059;
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--bg); color: var(--text); font-family: var(--font-main); line-height: 1.6; font-size: 16px; overflow-x: hidden; width: 100%; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+        /* HEADER */
+        header { padding: 40px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; width: 100%; }
+        .logo { font-weight: 800; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+        .nav a { color: var(--text-muted); text-decoration: none; font-size: 12px; margin-left: 30px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav a:hover { color: var(--gold); }
+
+        /* HERO */
+        .hero { padding: 120px 0; }
+        .hero h1 { font-size: clamp(36px, 7vw, 85px); font-weight: 800; line-height: 1; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 30px; }
+        .hero p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin-bottom: 50px; }
+        .btn-gold { 
+            padding: 16px 32px; background: var(--gold); color: #000; text-decoration: none; 
+            font-family: var(--font-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; display: inline-block;
+            transition: all 0.3s ease; text-align: center;
+        }
+        .btn-gold:hover {
+            background: #e0b86c;
+        }
+
+        /* PRODUCT SLIDER & INFO */
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 80px 0; }
+        .slider-container { width: 100%; aspect-ratio: 1/1; background: #000; border: 1px solid #222; overflow: hidden; position: relative; border-radius: 4px; }
+        .slider-track { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease; }
+        .slide { flex: 0 0 100%; width: 100%; height: 100%; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(0,0,0,0.6); border: 1px solid var(--gold); color: var(--gold); cursor: pointer; z-index: 10; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+        .prev-arrow { left: 10px; }
+        .next-arrow { right: 10px; }
+
+        /* SECTIONS & CONTENT */
+        section { padding: 80px 0; border-bottom: 1px solid #222; }
+        h2 { font-size: 32px; margin-bottom: 40px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.5px; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .text-block p { color: var(--text-muted); margin-bottom: 20px; }
+        .text-block p:last-child { margin-bottom: 0; }
+        
+        .specs-table { border-top: 1px solid #222; }
+        .specs-row { display: grid; grid-template-columns: 1fr 1fr; padding: 20px 0; border-bottom: 1px solid #222; font-family: var(--font-mono); font-size: 13px; }
+        .specs-row span:last-child { color: var(--gold); }
+
+        /* FSI BLOCK CENTERED */
+        .fsi-section { padding: 80px 0; border-bottom: none; }
+        .fsi-card { 
+            border: 1px solid var(--gold); 
+            padding: 50px 40px; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            text-align: center;
+            gap: 20px; 
+            background: linear-gradient(180deg, #14110a 0%, #0a0a0a 100%);
+            border-radius: 4px;
+        }
+        .fsi-logo-box { 
+            width: 220px; 
+            height: 90px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .fsi-logo-box img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; 
+            display: block;
+        }
+
+        footer { padding: 60px 0; text-align: center; color: #555; font-size: 12px; border-top: 1px solid #222; }
+
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+        @media (max-width: 768px) {
+            body { font-size: 15px; }
+            .container { padding: 0 20px; }
+            header { padding: 25px 20px; }
+            .logo { font-size: 18px; }
+            .nav a { margin-left: 16px; font-size: 11px; }
+
+            .hero { padding: 70px 0 50px; }
+            .hero h1 { font-size: clamp(32px, 8.5vw, 48px); margin-bottom: 20px; }
+            .hero p { font-size: 16px; margin-bottom: 35px; }
+            .hero .btn-gold { width: 100%; }
+
+            section { padding: 55px 0; }
+            h2 { font-size: 26px; margin-bottom: 25px; }
+
+            .product-grid { grid-template-columns: 1fr; gap: 35px; padding: 40px 0; }
+            .product-info h2 { font-size: 24px; }
+            .product-info .btn-gold { width: 100%; }
+            .slide-arrow { width: 36px; height: 36px; font-size: 12px; }
+
+            .content-grid { grid-template-columns: 1fr; gap: 25px; }
+
+            .specs-row { grid-template-columns: 1fr; gap: 4px; padding: 14px 0; }
+            .specs-row span:first-child { color: #fff; font-size: 12px; }
+
+            .fsi-section { padding: 50px 0 30px; }
+            .fsi-card { padding: 35px 20px; gap: 15px; }
+            .fsi-card h3 { font-size: 18px; }
+            .fsi-logo-box { width: 180px; height: 75px; }
+
+            footer { padding: 40px 20px; }
+        }
+
+        @media (max-width: 380px) {
+            header { padding: 20px 15px; }
+            .nav a { margin-left: 10px; font-size: 10px; }
+            .container { padding: 0 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">EcoSense</div>
+    <div class="nav">
+        <a href="#about">Философия</a>
+        <a href="#tech">Технология</a>
+        <a href="#fsi">Партнеры</a>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <h1>Экономия <br>в каждой минуте.</h1>
+        <p>EcoSense — автономная система управления оборудованием. Мы исключаем человеческий фактор, сокращая простои и энергозатраты предприятий с помощью предиктивной аналитики.</p>
+        <a href="#product" class="btn-gold">Запросить внедрение</a>
+    </section>
+
+    <!-- Слайдер изображений и карточка продукта -->
+    <section id="product">
+        <div class="product-grid">
+            <div class="slider-container" id="ecoSlider">
+                <div class="slider-track" id="sliderTrack">
+                    <div class="slide"><img src="EcoSense.png" alt="EcoSense Module"></div>
+                    <div class="slide"><img src="EcoSense2.png" alt="EcoSense Interface"></div>
+                    <div class="slide"><img src="EcoSense3.png" alt="EcoSense Interface"></div>
+                    <div class="slide"><img src="EcoSense4.png" alt="EcoSense Interface"></div>
+                </div>
+                <button class="slide-arrow prev-arrow" onclick="moveSlide(-1)" aria-label="Назад">❮</button>
+                <button class="slide-arrow next-arrow" onclick="moveSlide(1)" aria-label="Вперед">❯</button>
+            </div>
+            
+            <div class="product-info">
+                <h2 style="margin-bottom:20px;">EcoSense Smart Module</h2>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">Интеллектуальный переходник-адаптер для лабораторного оборудования. Анализирует освещенность, шум, движение и потребление тока, автоматически обесточивая приборы при простое.</p>
+                <a href="mailto:info@ecosense.bureau" class="btn-gold" style="background: transparent; color: var(--gold); border: 1px solid var(--gold);">Связаться с отделом продаж</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Описание и философия -->
+    <section id="about">
+        <h2>Философия управления</h2>
+        <div class="content-grid">
+            <div class="text-block">
+                <p><b>В чем проблема?</b> Неэффективное использование электроэнергии и риск выхода из строя лабораторного оборудования из-за «человеческого фактора» — классическая проблема учебных и научных центров.</p>
+                <p><b>Как работает EcoSense?</b> Устройство представляет собой интеллектуальный контроллер питания. Основной алгоритм: прибор подает команду на отключение нагрузки при одновременном выполнении условий — фиксируется потребление тока, но отсутствуют внешние признаки активности в течение заданного интервала.</p>
+            </div>
+            <div class="text-block">
+                <p><b>Область применения:</b> Учебные лаборатории технических вузов, мастерские, коворкинги и научно-исследовательские центры.</p>
+                <p>Пользователь имеет возможность гибко настраивать параметры срабатывания посредством специализированного Android-приложения.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Техническая спецификация -->
+    <section id="tech">
+        <h2>Техническая реализация</h2>
+        <div class="specs-table">
+            <div class="specs-row"><span>Процессор</span><span>ESP32 Dual-Core</span></div>
+            <div class="specs-row"><span>Периферия</span><span>Акустический модуль, вибродатчик, датчик тока</span></div>
+            <div class="specs-row"><span>Интерфейс</span><span>Android-приложение / Bluetooth / Wi-Fi</span></div>
+            <div class="specs-row"><span>Монтаж</span><span>Включение в стандартную розетку 220В</span></div>
+        </div>
+    </section>
+
+    <!-- Блок ФСИ (Логотип по центру сверху) -->
+    <section id="fsi" class="fsi-section">
+        <div class="fsi-card">
+            <div class="fsi-logo-box">
+                <img src="fsi.png" alt="Фонд содействия инновациям">
+            </div>
+            <div>
+                <h3 style="color: var(--gold); margin-bottom: 10px;">Поддержано Фондом содействия инновациям</h3>
+                <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto;">Проект EcoSense прошел конкурсный отбор и получил грантовую поддержку в рамках программы «Студенческий стартап» (VII очередь).</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 EcoSense. Интеллектуальный инжиниринг промышленных систем.</p>
+</footer>
+
+<script>
+    let currentSlide = 0;
+    const track = document.getElementById('sliderTrack');
+    const totalSlides = document.querySelectorAll('.slide').length;
+
+    function moveSlide(direction) {
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    // Touch Swipe Support для телефонов
+    let touchStartX = 0;
+    const slider = document.getElementById('ecoSlider');
+    slider.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, { passive: true });
+    slider.addEventListener('touchend', e => {
+        let diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 40) moveSlide(diff > 0 ? 1 : -1);
+    }, { passive: true });
+</script>
+
+</body>
+</html>

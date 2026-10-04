@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EcoSense | Интеллектуальный контроль питания</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0A0A;
+            --surface: #141414;
+            --text: #EAEAEA;
+            --text-muted: #888888;
+            --gold: #C5A059;
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--bg); color: var(--text); font-family: var(--font-main); line-height: 1.6; font-size: 16px; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+        /* HEADER */
+        header { padding: 40px 50px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+        .nav a { color: var(--text-muted); text-decoration: none; font-size: 12px; margin-left: 30px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav a:hover { color: var(--gold); }
+
+        /* HERO */
+        .hero { padding: 120px 0; }
+        .hero h1 { font-size: clamp(45px, 8vw, 85px); font-weight: 800; line-height: 0.95; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 30px; }
+        .hero p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin-bottom: 50px; }
+        .btn-gold { 
+            padding: 16px 32px; background: var(--gold); color: #000; text-decoration: none; 
+            font-family: var(--font-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; display: inline-block;
+        }
+
+        /* SECTIONS */
+        section { padding: 80px 0; }
+        h2 { font-size: 32px; margin-bottom: 40px; font-weight: 700; }
+        
+        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .card { padding: 40px; border: 1px solid #222; background: var(--surface); }
+        .card-num { font-family: var(--font-mono); color: var(--gold); margin-bottom: 20px; display: block; font-size: 12px; }
+        .card h3 { font-size: 18px; margin-bottom: 15px; }
+        .card p { color: var(--text-muted); font-size: 14px; }
+
+        /* IMAGE CONTAINERS */
+        .visual-large { width: 100%; height: 500px; background: #000; margin: 40px 0; border: 1px solid #222; overflow: hidden; }
+        .visual-large img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .visual-small { 
+            width: 100%; 
+            aspect-ratio: 1/1; /* Изменили с 16/10 на 1/1 */
+            background: #000; 
+            border: 1px solid #222; 
+            overflow: hidden; 
+        }
+        .visual-small img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Изображение заполнит квадрат без искажений */
+        }
+
+        /* FSI BLOCK */
+        .fsi-card { 
+            border: 1px solid var(--gold); 
+            padding: 50px; 
+            display: flex; align-items: center; gap: 40px;
+            background: linear-gradient(90deg, #14110a 0%, #0a0a0a 100%);
+        }
+        .fsi-logo-box { width: 200px; height: 80px; display: flex; align-items: center; justify-content: center; }
+        .fsi-logo-box img { width: 100%; height: 100%; object-fit: contain; }
+
+        footer { padding: 60px 0; border-top: 1px solid #222; text-align: center; color: #555; font-size: 12px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 40px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            header { padding: 30px 20px; }
+            .fsi-card { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">EcoSense</div>
+    <div class="nav">
+        <a href="#about">О системе</a>
+        <a href="#product">Продукт</a>
+        <a href="#fsi">Партнеры</a>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <h1>Интеллектуальный контроль <br>промышленного питания.</h1>
+        <p>EcoSense — автономная система управления оборудованием. Мы исключаем человеческий фактор, сокращая простои и энергозатраты предприятий с помощью предиктивной аналитики.</p>
+        <a href="#product" class="btn-gold">Запросить внедрение</a>
+    </section>
+
+    <div class="visual-large">
+        <img src="VASE_PHOTO_NAME.png" alt="Промышленная инсталляция EcoSense">
+    </div>
+
+    <section id="about">
+        <h2>Философия управления</h2>
+        <div class="feature-grid">
+            <div class="card">
+                <span class="card-num">01 // АВТОНОМНОСТЬ</span>
+                <h3>Ситуационный интеллект</h3>
+                <p>В отличие от таймеров, EcoSense «понимает» обстановку. Он считывает 4 параметра: ток, свет, шум и движение. Если оборудование работает впустую в пустой лаборатории — система безопасно обесточит его.</p>
+            </div>
+            <div class="card">
+                <span class="card-num">02 // НАДЕЖНОСТЬ</span>
+                <h3>Продление срока службы</h3>
+                <p>Бесконтрольные простои включенного оборудования критически снижают его ресурс. Мы автоматизируем цикл обслуживания, сохраняя технику для долгой эксплуатации.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="product">
+        <h2>Решение</h2>
+        <div class="feature-grid">
+            <div class="visual-small">
+                <img src="EcoSense.png" alt="Модуль EcoSense">
+            </div>
+            <div>
+                <h3 style="font-size: 24px; margin-bottom: 20px;">EcoSense Smart Module</h3>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">Интеллектуальный переходник-адаптер для лабораторного оборудования. Анализирует освещенность, шум, движение и потребление тока, автоматически обесточивая приборы при простое.</p>
+                <a href="mailto:info@ecosense.bureau" class="btn-gold" style="background: transparent; color: var(--gold); border: 1px solid var(--gold);">Связаться с отделом продаж</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="fsi" class="fsi-section">
+        <div class="fsi-card">
+            <div class="fsi-logo-box">
+                <img src="FSI_LOGO.png" alt="Фонд содействия инновациям">
+            </div>
+            <div>
+                <h3 style="color: var(--gold); margin-bottom: 10px;">Поддержано Фондом содействия инновациям</h3>
+                <p style="color: var(--text-muted);">Проект EcoSense прошел конкурсный отбор и получил грантовую поддержку в рамках программы «Студенческий стартап» (VII очередь).</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 EcoSense. Интеллектуальный инжиниринг промышленных систем.</p>
+</footer>
+
+</body>
+</html>
